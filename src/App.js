@@ -3,6 +3,7 @@ import React, {useState} from 'react';
 import './App.css';
 import Laskuri from './Laskuri';
 import Viesti from './Viesti';
+import Posts from './Posts';
 
 const App = () => {
 
@@ -17,6 +18,8 @@ const huomio = () => {
   return (
     <div className="App">
         <h1>Hello from React!</h1>
+
+        <Posts />
 
         {showLaskuri && <Laskuri huomio={huomio} />}
 
