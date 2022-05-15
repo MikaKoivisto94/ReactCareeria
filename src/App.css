@@ -2,6 +2,16 @@
   text-align: center;
 }
 
+.custDetails{
+  background-color: chocolate;
+  border-style: solid;
+  width: 85%;
+  margin: auto;
+  margin-bottom: 50px;
+  border-radius: 30px;
+  align-content: center;
+}
+
 .posts {
   background-color: aqua;
   max-width: 70%;
