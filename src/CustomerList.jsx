@@ -3,12 +3,14 @@ import './App.css';
 import React, {useState, useEffect} from 'react';
 import CustomerService from './services/Customer'
 import Customer from './Customer';
+import CustomerAdd from './CustomerAdd';
 
 const CustomerList = () => {
 
 //Komponentin tilan määritys
 const [customers, setCustomers] = useState([])
 const [showCustomers, setShowCustomers] = useState(false)
+const [lisäysTila, setLisäysTila] = useState(false)
 
 useEffect(() => {
     CustomerService.getAll()
@@ -21,7 +23,11 @@ useEffect(() => {
 
   return (
     <>
-        <h2 onClick={() => setShowCustomers(!showCustomers)}>Customers</h2>
+        <h1><nobr style ={{ cursor: 'pointer '}}
+            onClick={() => setShowCustomers(!showCustomers)}>Customers</nobr>
+            {!lisäysTila && <button className='nappi' onClick={() => setLisäysTila(true)}>Add new</button>}</h1>
+
+            {lisäysTila && <CustomerAdd />}
 
         {
             showCustomers && customers && customers.map(c => (
