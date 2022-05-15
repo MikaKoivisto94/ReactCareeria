@@ -2,6 +2,17 @@
   text-align: center;
 }
 
+.posts {
+  background-color: aqua;
+  max-width: 70%;
+  border-radius: 20px;
+  border-width: 1px;
+  border-style: solid;
+  border-color: blueviolet;
+  margin: auto;
+  margin-bottom: 2%;
+}
+
 .App-logo {
   height: 40vmin;
   pointer-events: none;
