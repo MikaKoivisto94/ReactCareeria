@@ -27,7 +27,7 @@ useEffect(() => {
             onClick={() => setShowCustomers(!showCustomers)}>Customers</nobr>
             {!lisäysTila && <button className='nappi' onClick={() => setLisäysTila(true)}>Add new</button>}</h1>
 
-            {lisäysTila && <CustomerAdd />}
+            {lisäysTila && <CustomerAdd setLisäysTila={setLisäysTila}/>}
 
         {
             showCustomers && customers && customers.map(c => (
