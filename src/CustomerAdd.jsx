@@ -39,14 +39,12 @@ const handleSubmit = (event) => {
     .then(response => {
       if(response.status === 200) {
         alert("Added new customer: " + newCustomer.companyName)
+        setLisäysTila(false)
       }
     })
     .catch(error => {
       alert("Error")
     })
-    setTimeout(() => {
-      setLisäysTila(false)
-    }, 500)
 }
 
   return (

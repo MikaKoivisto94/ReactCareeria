@@ -18,7 +18,7 @@ useEffect(() => {
         setCustomers(data)
     });
 }
-,[]    
+,[lisäysTila]    
 )
 
   return (
