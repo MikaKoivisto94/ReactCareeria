@@ -63,11 +63,11 @@ const editCustomer = (customer) => {
                    const lowerCaseName = c.companyName.toLowerCase() 
                    if (lowerCaseName.indexOf(search) > -1) {
                        return (
-                    <Customer key={c.customerId} customer={c} reloadNow={reloadNow} reload={reload}
-                    setIsPositive={setIsPositive} setMessage={setMessage} setShowMessage={setShowMessage}
-                    editCustomer={editCustomer}
-                    />
-                    )
+                        <Customer key={c.customerId} customer={c} reloadNow={reloadNow} reload={reload}
+                        setIsPositive={setIsPositive} setMessage={setMessage} setShowMessage={setShowMessage}
+                        editCustomer={editCustomer}
+                        />
+                      )
                    }
                 }
             )
