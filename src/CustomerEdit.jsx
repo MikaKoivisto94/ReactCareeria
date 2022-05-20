@@ -2,30 +2,28 @@ import logo from './logo.svg';
 import './App.css';
 import React, {useState} from 'react';
 import CustomerService from './services/Customer'
-import { toHaveAttribute } from '@testing-library/jest-dom/dist/matchers';
 
-const CustomerAdd = ({setLisäysTila, setIsPositive, setMessage, setShowMessage}) => {
+const CustomerEdit = ({setMuokkausTila, setIsPositive, setMessage, setShowMessage, muokattavaCustomer}) => {
 
 //Komponentin tilan määritys
-const [newCustomerId, setNewCustomerId] = useState('')
-const [newCompanyName, setNewCompanyName] = useState('')
-const [newContactName, setNewContactName] = useState('')
-const [newContactTitle, setNewContactTitle] = useState('')
+const [newCustomerId, setNewCustomerId] = useState(muokattavaCustomer.customerId)
+const [newCompanyName, setNewCompanyName] = useState(muokattavaCustomer.companyName)
+const [newContactName, setNewContactName] = useState(muokattavaCustomer.contactName)
+const [newContactTitle, setNewContactTitle] = useState(muokattavaCustomer.contactTitle)
 
-const [newCountry, setNewCountry] = useState('')
-const [newAddress, setNewAddress] = useState('')
-const [newCity, setNewCity] = useState('')
-const [newRegion, setNewRegion] = useState('')
+const [newCountry, setNewCountry] = useState(muokattavaCustomer.country)
+const [newAddress, setNewAddress] = useState(muokattavaCustomer.address)
+const [newCity, setNewCity] = useState(muokattavaCustomer.city)
 
-const [newPostalCode, setNewPostalCode] = useState('')
-const [newPhone, setNewPhone] = useState('')
-const [newFax, setNewFax] = useState('')
+const [newPostalCode, setNewPostalCode] = useState(muokattavaCustomer.postalCode)
+const [newPhone, setNewPhone] = useState(muokattavaCustomer.phone)
+const [newFax, setNewFax] = useState(muokattavaCustomer.fax)
 
 // onSubmit tapahtumankäsittelijäfunktio
 const handleSubmit = (event) => {
     event.preventDefault()
     var newCustomer = {
-      customerId: newCustomerId.toUpperCase(),
+      customerId: newCustomerId,
       companyName: newCompanyName,
       contactName: newContactName,
       contactTitle: newContactTitle,
@@ -36,17 +34,18 @@ const handleSubmit = (event) => {
       phone: newPhone,
       fax: newFax
     }
-    CustomerService.create(newCustomer)
+
+    CustomerService.update(newCustomer)
     .then(response => {
       if(response.status === 200) {
-        setMessage("Added new customer: " + newCustomer.companyName)
+        setMessage("Edited existing customer: " + newCustomer.companyName)
         setIsPositive(true)
         setShowMessage(true)
         
         setTimeout(() => {
           setShowMessage(false)
         }, 5000)
-        setLisäysTila(false)
+        setMuokkausTila(false)
       }
     })
     .catch(error => {
@@ -60,13 +59,12 @@ const handleSubmit = (event) => {
 }
 
   return (
-    <div id='addNew'>
-        <h2>Customer add</h2>
+    <div id='edit'>
+        <h2>Customer edit</h2>
 
         <form onSubmit={handleSubmit}>
           <div>
-            <input type='text' value={newCustomerId} placeholder="ID with 5 capital letters" maxLength="5" minLength="5"
-              onChange={({ target }) => setNewCustomerId(target.value)} required />
+            <input type='text' value={newCustomerId} disabled />
           </div>
           <div>
             <input type='text' value={newCompanyName} placeholder='Company Name'
@@ -106,10 +104,10 @@ const handleSubmit = (event) => {
           </div>
 
           <input type='submit' value='Save' />
-          <input type='button' value='Back' onClick={() => setLisäysTila(false)} />
+          <input type='button' value='Back' onClick={() => setMuokkausTila(false)} />
         </form>
     </div>
   );
 }
 
-export default CustomerAdd;
+export default CustomerEdit;
