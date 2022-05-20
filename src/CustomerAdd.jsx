@@ -2,8 +2,9 @@ import logo from './logo.svg';
 import './App.css';
 import React, {useState} from 'react';
 import CustomerService from './services/Customer'
+import { toHaveAttribute } from '@testing-library/jest-dom/dist/matchers';
 
-const CustomerAdd = ({setLisäysTila}) => {
+const CustomerAdd = ({setLisäysTila, setIsPositive, setMessage, setShowMessage}) => {
 
 //Komponentin tilan määritys
 const [newCustomerId, setNewCustomerId] = useState('')
@@ -38,12 +39,23 @@ const handleSubmit = (event) => {
     CustomerService.create(newCustomer)
     .then(response => {
       if(response.status === 200) {
-        alert("Added new customer: " + newCustomer.companyName)
+        setMessage("Added new customer: " + newCustomer.companyName)
+        setIsPositive(true)
+        setShowMessage(true)
+        
+        setTimeout(() => {
+          setShowMessage(false)
+        }, 5000)
         setLisäysTila(false)
       }
     })
     .catch(error => {
-      alert("Error")
+      setMessage(error)
+      setIsPositive(false)
+      setShowMessage(true)
+      setTimeout(() => {
+        setShowMessage(false)
+      }, 6000)
     })
 }
 
