@@ -2,6 +2,18 @@
   text-align: center;
 }
 
+#userTable{
+  background-color: white;
+  border-style: solid;
+  width: 30%;
+  margin: auto;
+  margin-bottom: 50px;
+  margin-top: 10px;
+  border-radius: 30px;
+  padding-left: 10%;
+  padding-right: 10%;
+}
+
 .neg {
   color: red;
   background: lightgrey;
@@ -35,11 +47,12 @@
 .custDetails{
   background-color: chocolate;
   border-style: solid;
-  width: 40%;
+  width: 50%;
   margin: auto;
   margin-bottom: 50px;
   border-radius: 30px;
   padding-left: 10%;
+  padding-right: 10%;
 }
 
 .posts {
