@@ -1,5 +1,5 @@
 import logo from './logo.svg';
-import React, {useState} from 'react'
+import React, {useState, useEffect} from 'react'
 import './App.css'
 import Laskuri from './Laskuri'
 import Posts from './Posts'
@@ -9,8 +9,10 @@ import Nav from 'react-bootstrap/Nav'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import Message from './Message'
 import UserList from './UserList'
+import Login from './Login'
 
 import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom'
+
 
 const App = () => {
 
@@ -20,17 +22,37 @@ const [showLaskuri, setShowLaskuri] = useState(false)
 const [showMessage, setShowMessage] = useState(false)
 const [message, setMessage] = useState('')
 const [isPositive, setIsPositive] = useState(false)
+const [loggedInUser, setLoggedInUser] = useState('')
+
+useEffect(() => {
+  let storedUser = localStorage.getItem("username")
+  if (storedUser !== null) {
+      setLoggedInUser(storedUser)
+  }
+},[])
+
+// Logout napin tapahtumankäsittelijä
+const logout = () => {
+  localStorage.clear()
+  setLoggedInUser('')
+}
 
   return (
     <div className="App">
+          {!loggedInUser && <Login setMessage={setMessage} setIsPositive={setIsPositive}
+      setShowMessage={setShowMessage} setLoggedInUser={setLoggedInUser}/>}
+
+      { loggedInUser &&
         <Router>
 
        <Navbar bg='dark' variant="dark">
-         <Nav className="mr-auto"></Nav>
+         <Nav className="mr-auto">
          <Link to={'/Customers'} className='nav-link'>Customers</Link>
          <Link to={'/Laskuri'} className='nav-link'>Laskuri</Link>
          <Link to={'/Posts'} className='nav-link'>Typicode Posts</Link>
          <Link to={'/Users'} className='nav-link'>Users</Link>
+         <button onClick={() => logout()}>Logout</button>
+         </Nav>
        </Navbar>
        
        <h2>Northwind Traders</h2>
@@ -49,7 +71,7 @@ const [isPositive, setIsPositive] = useState(false)
 
           </Switch>
         </Router>
-
+      }
     </div>
   )
 }
