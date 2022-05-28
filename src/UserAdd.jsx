@@ -15,6 +15,9 @@ const [newAccesslevelid, setNewAccesslvlid] = useState(2)
 const [newUsername, setNewUsername] = useState('')
 const [newPassword, setNewPassword] = useState('')
 
+const [passwordInfo, setPasswordInfo] = useState('')
+const [pwInfoStyle, setPwInfoStyle] = useState('red')
+
 // onSubmit tapahtumankäsittelijäfunktio
 const handleSubmit = (event) => {
     event.preventDefault()
@@ -52,6 +55,18 @@ const handleSubmit = (event) => {
     })
 }
 
+// Salasanan varmistus
+const confirm = (param) => {
+  if (param !== newPassword) {
+    setPasswordInfo("Passwords do not match")
+    setPwInfoStyle('red')
+  }
+  else {
+    setPasswordInfo("Passwords match")
+    setPwInfoStyle('green')
+  }
+}
+
   return (
     <div id='addNew'>
         <h2>User add</h2>
@@ -81,8 +96,19 @@ const handleSubmit = (event) => {
             <input type='password' value={newPassword} placeholder='Password'
               onChange={({ target }) => setNewPassword(target.value)} />
           </div>
+          <div>
+            <input type='password' placeholder='Confirm password'
+              onChange={({target}) => confirm(target.value)} />
+          </div>
+          <div> 
+            {pwInfoStyle === 'red' ?
+            <label style={{color: 'red'}}>{passwordInfo}</label> :
+            <label style={{color: 'green'}}>{passwordInfo}</label>
+            }
+          </div>
          
-          <input type='submit' value='Save' />
+          {pwInfoStyle === 'red' && <input type='submit' value='Save' disabled/>}
+          {pwInfoStyle === 'green' && <input type='submit' value='Save' />}
           <input type='button' value='Back' onClick={() => setLisäysTila(false)} />
         </form>
     </div>
