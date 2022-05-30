@@ -55,6 +55,17 @@
   padding-right: 10%;
 }
 
+.prodDetails{
+  background-color: chocolate;
+  border-style: solid;
+  width: 50%;
+  margin: auto;
+  margin-bottom: 50px;
+  border-radius: 30px;
+  padding-left: 10%;
+  padding-right: 10%;
+}
+
 .posts {
   background-color: aqua;
   max-width: 70%;

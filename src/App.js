@@ -10,6 +10,7 @@ import 'bootstrap/dist/css/bootstrap.min.css'
 import Message from './Message'
 import UserList from './UserList'
 import Login from './Login'
+import ProductList from './ProductList'
 
 import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom'
 
@@ -23,11 +24,19 @@ const [showMessage, setShowMessage] = useState(false)
 const [message, setMessage] = useState('')
 const [isPositive, setIsPositive] = useState(false)
 const [loggedInUser, setLoggedInUser] = useState('')
+const [isAdmin, setIsAdmin] = useState(false)
 
 useEffect(() => {
   let storedUser = localStorage.getItem("username")
   if (storedUser !== null) {
       setLoggedInUser(storedUser)
+  }
+  let storedAccess = localStorage.getItem("accesslevelid")
+  if (storedAccess != false) {
+      setIsAdmin(true)
+  }
+  else {
+    setIsAdmin(false)
   }
 },[])
 
@@ -40,7 +49,7 @@ const logout = () => {
   return (
     <div className="App">
           {!loggedInUser && <Login setMessage={setMessage} setIsPositive={setIsPositive}
-      setShowMessage={setShowMessage} setLoggedInUser={setLoggedInUser}/>}
+      setShowMessage={setShowMessage} setLoggedInUser={setLoggedInUser} setIsAdmin={setIsAdmin}/>}
 
       { loggedInUser &&
         <Router>
@@ -50,7 +59,8 @@ const logout = () => {
          <Link to={'/Customers'} className='nav-link'>Customers</Link>
          <Link to={'/Laskuri'} className='nav-link'>Laskuri</Link>
          <Link to={'/Posts'} className='nav-link'>Typicode Posts</Link>
-         <Link to={'/Users'} className='nav-link'>Users</Link>
+         {isAdmin && <Link to={'/Users'} className='nav-link'>Users</Link>}
+         <Link to={'/Products'} className='nav-link'>Products</Link>
          <button onClick={() => logout()}>Logout</button>
          </Nav>
        </Navbar>
@@ -63,7 +73,10 @@ const logout = () => {
           <Route path="/Customers"><CustomerList setMessage={setMessage} setIsPositive={setIsPositive}
           setShowMessage={setShowMessage} /></Route>
 
-          <Route path="/Users"><UserList setMessage={setMessage} setIsPositive={setIsPositive}
+          {isAdmin && <Route path="/Users"><UserList setMessage={setMessage} setIsPositive={setIsPositive}
+          setShowMessage={setShowMessage} /></Route>}
+
+          <Route path="/Products"><ProductList setMessage={setMessage} setIsPositive={setIsPositive}
           setShowMessage={setShowMessage} /></Route>
 
           <Route path="/Laskuri"><Laskuri /></Route>

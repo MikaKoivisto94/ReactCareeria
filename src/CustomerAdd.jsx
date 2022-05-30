@@ -2,7 +2,6 @@ import logo from './logo.svg';
 import './App.css';
 import React, {useState} from 'react';
 import CustomerService from './services/Customer'
-import { toHaveAttribute } from '@testing-library/jest-dom/dist/matchers';
 
 const CustomerAdd = ({setLisäysTila, setIsPositive, setMessage, setShowMessage}) => {
 
@@ -15,7 +14,6 @@ const [newContactTitle, setNewContactTitle] = useState('')
 const [newCountry, setNewCountry] = useState('')
 const [newAddress, setNewAddress] = useState('')
 const [newCity, setNewCity] = useState('')
-const [newRegion, setNewRegion] = useState('')
 
 const [newPostalCode, setNewPostalCode] = useState('')
 const [newPhone, setNewPhone] = useState('')

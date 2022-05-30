@@ -16,6 +16,10 @@ const [search, setSearch] = useState("")
 
 // UseEffect ajetaan aina alussa kerran
 useEffect(() => {
+    const token = localStorage.getItem('token')
+    UserService
+        .setToken(token)
+
     UserService.getAll()
     .then(data => {
         setUsers(data)

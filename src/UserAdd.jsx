@@ -30,6 +30,10 @@ const handleSubmit = (event) => {
       password: md5(newPassword) // Salataan md5 kirjaston metodilla
     }
 
+    const token = localStorage.getItem('token')
+    UserService
+        .setToken(token)
+
     console.log(newUser)
 
     UserService.create(newUser)
