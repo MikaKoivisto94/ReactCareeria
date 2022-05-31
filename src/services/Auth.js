@@ -1,6 +1,7 @@
 import axios from 'axios'
 
-const url = "https://localhost:44326/api/authentication"
+//const url = "https://localhost:44326/api/authentication"
+const url = "https://nwbackendmika.azurewebsites.net/api/authentication"
 
 const authenticate = (userForAuth) => {
     const request = axios.post(url, userForAuth)

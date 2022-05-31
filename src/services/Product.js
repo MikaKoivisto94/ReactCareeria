@@ -1,6 +1,6 @@
 import axios from "axios"
 
-const baseUrl = "https://localhost:44326/api/products"
+const baseUrl = "https://nwbackendmika.azurewebsites.net/api/products"
 
 let token = null
 
