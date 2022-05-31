@@ -118,10 +118,6 @@ const radioChange = (value) => {
               /> Yes
           </div>
           </div>
-          <div>
-            <input type='text' value={newImageLink} placeholder='Image Link'
-              onChange={({ target }) => setNewImageLink(target.value)} />
-          </div>
 
           <input type='submit' value='Save' />
           <input type='button' value='Back' onClick={() => setMuokkausTila(false)} />

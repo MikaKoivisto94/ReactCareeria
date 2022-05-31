@@ -7,15 +7,15 @@ const ProductAdd = ({setLisäysTila, setIsPositive, setMessage, setShowMessage})
 
 //Komponentin tilan määritys
 const [newProductName, setNewProductName] = useState('')
-const [newSupplierId, setNewSupplierId] = useState(0)
-const [newCategoryId, setNewCategoryId] = useState(0)
+const [newSupplierId, setNewSupplierId] = useState('')
+const [newCategoryId, setNewCategoryId] = useState('')
 
 const [newQuantityPerUnit, setNewQuantityPerUnit] = useState('')
-const [newUnitPrice, setNewUnitPrice] = useState(0)
-const [newUnitsInStock, setNewUnitsInStock] = useState(0)
+const [newUnitPrice, setNewUnitPrice] = useState('')
+const [newUnitsInStock, setNewUnitsInStock] = useState('')
 
-const [newUnitsOnOrder, setNewUnitsOnOrder] = useState(0)
-const [newReorderLevel, setNewReorderLevel] = useState(0)
+const [newUnitsOnOrder, setNewUnitsOnOrder] = useState('')
+const [newReorderLevel, setNewReorderLevel] = useState('')
 const [newDiscontinued, setNewDiscontinued] = useState(false)
 const [newImageLink, setNewImageLink] = useState('')
 
@@ -111,16 +111,12 @@ const radioChange = (value) => {
           </div>
           <div>
             <label>Discontinued</label>
-            <div onChange={({target}) => radioChange(target.value)}>
+            <div onChange={({target}) => radioChange(target.value)}> 
             <input type='radio' name="discontinued" value="true"
               /> No
             <input type='radio' name="discontinued" value="false"
               /> Yes
           </div>
-          </div>
-          <div>
-            <input type='text' value={newImageLink} placeholder='Image Link'
-              onChange={({ target }) => setNewImageLink(target.value)} />
           </div>
 
           <input type='submit' value='Save' />

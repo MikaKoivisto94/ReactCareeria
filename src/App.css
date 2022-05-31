@@ -3,8 +3,8 @@
 }
 
 #userTable{
-  background-color: white;
-  border-style: solid;
+  background-color:darkgrey;
+  border-style: none;
   width: 30%;
   margin: auto;
   margin-bottom: 50px;
@@ -13,6 +13,7 @@
   padding-left: 10%;
   padding-right: 10%;
 }
+
 
 .neg {
   color: red;
@@ -45,22 +46,26 @@
 }
 
 .custDetails{
-  background-color: chocolate;
+  background-color:lightseagreen;
   border-style: solid;
+  border-collapse: separate;
+  border-spacing: 30 20px;
   width: 50%;
   margin: auto;
-  margin-bottom: 50px;
+  margin-bottom: 40px;
   border-radius: 30px;
   padding-left: 10%;
   padding-right: 10%;
 }
 
 .prodDetails{
-  background-color: chocolate;
+  background-color:lightseagreen;
   border-style: solid;
+  border-collapse: separate;
+  border-spacing: 20 20px;
   width: 50%;
   margin: auto;
-  margin-bottom: 50px;
+  margin-bottom: 40px;
   border-radius: 30px;
   padding-left: 10%;
   padding-right: 10%;

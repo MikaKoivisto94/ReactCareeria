@@ -74,7 +74,6 @@ const deleteProduct = (product) => {
                         <th>Units In Stock</th>
                         <th>Units On Order</th>
                         <th>Discontinued</th>
-                        <th>Image Link</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -86,7 +85,6 @@ const deleteProduct = (product) => {
                         <td>{product.unitsInStock}</td>
                         <td>{product.unitsOnOrder}</td>
                         <td>{product.Discontinued}</td>
-                        <td>{product.imageLink}</td>
                     </tr>
                 </tbody>
             </table>
